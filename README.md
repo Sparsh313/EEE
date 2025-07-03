@@ -1,0 +1,1 @@
+We’re building a platform for EEE students who are tired of just taking notes and ready to build real stuff. Got a crazy idea? Let’s turn it into a project. Need a team, tools, or a push? We’ve got you. This is where sparks fly, circuits come alive, and student-led innovation takes off. Let’s build cool things — and break a few limits while we’re at it
