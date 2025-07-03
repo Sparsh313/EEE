@@ -1,0 +1,63 @@
+MERN App Backend Structure (Node.js + Express + MongoDB)
+
+project-root/
+├─ config/
+│   └─ db.js               # MongoDB connection logic
+│   └─ default.json        # Environment variables for dev
+│   └─ production.json     # Env variables for prod
+├─ controllers/
+│   └─ authController.js   # register, login, token logic
+│   └─ projectController.js# CRUD for project tutorials
+│   └─ topicController.js  # CRUD for learning topics
+│   └─ userController.js   # profile, bookmarks, progress
+├─ middleware/
+│   └─ auth.js             # JWT authentication middleware
+│   └─ errorHandler.js     # Centralized error handling
+├─ models/
+│   └─ User.js             # User schema (email, password, role, bookmarks, completed)
+│   └─ Project.js          # Projects schema (title, steps, assets, tags, author)
+│   └─ Topic.js            # Learning topics schema (title, content, category)
+├─ routes/
+│   └─ auth.js             # /api/auth routes
+│   └─ projects.js         # /api/projects routes
+│   └─ topics.js           # /api/topics routes
+│   └─ users.js            # /api/users routes (profile, bookmarks, progress)
+├─ utils/
+│   └─ logger.js           # Winston or console logging setup
+│   └─ validator.js        # Joi or express-validator schemas
+├─ uploads/                # Store uploaded images or files (or use Cloudinary)
+├─ .env                    # Environment variables (gitignored)
+├─ .gitignore
+├─ package.json
+├─ README.md
+└─ server.js               # Entry point (Express app setup + routes + error handler)
+
+
+API Endpoints Outline:
+
+Auth:
+  POST    /api/auth/register    - create account
+  POST    /api/auth/login       - get JWT
+
+Projects:
+  GET     /api/projects/         - list all projects
+  GET     /api/projects/:id      - project detail
+  POST    /api/projects/         - create new project (auth)
+  PUT     /api/projects/:id      - update project (auth)
+  DELETE  /api/projects/:id      - delete project (auth)
+
+Topics:
+  GET     /api/topics/           - list topics
+  GET     /api/topics/:id        - topic detail
+  POST    /api/topics/           - create topic (auth)
+  PUT     /api/topics/:id        - update topic (auth)
+  DELETE  /api/topics/:id        - delete topic (auth)
+
+Users:
+  GET     /api/users/me          - current user profile (auth)
+  PUT     /api/users/me          - update profile (auth)
+  PUT     /api/users/bookmark    - add/remove bookmark (auth)
+  PUT     /api/users/complete    - mark project completed (auth)
+  GET     /api/users/bookmarks   - list bookmarks (auth)
+  GET     /api/users/completed   - list completed projects (auth)
+*/
