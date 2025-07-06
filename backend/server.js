@@ -12,6 +12,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Below middleware
+const authRoutes = require("./routes/AuthRoute");
+const projectRoutes = require("./routes/ProjectRoute");
+const TopicRoutes = require("./routes/TopicRoute");
+
+app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/topic", TopicRoutes);
+
 // Test Route
 app.get("/", (req, res) => {
   res.send("EEE Project API Running 🚀");
