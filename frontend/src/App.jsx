@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects"; 
+import Learning from "./pages/Learning";
 // import ProjectDetail from "./pages/ProjectDetail";
-// import Learn from "./pages/Learn";
 // import TopicDetail from "./pages/TopicDetail";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} /> 
           <Route path="/projects" element={<Projects />} />
           {/* <Route path="/projects/:slug" element={<ProjectDetail />} /> */}
-          {/* <Route path="/learning" element={<Learn />} /> */}
+          <Route path="/learning" element={<Learning />} />
           {/* <Route path="/learning/:slug" element={<TopicDetail />} /> */}
         </Routes>
       </div>
