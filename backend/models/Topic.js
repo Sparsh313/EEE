@@ -17,7 +17,7 @@ const learningTopicSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-    //   enum: ["Microcontroller", "IoT", "Control System", "Embedded", "Other"],
+      // enum: ["Microcontroller", "IoT", "Control System", "Embedded", "Other"],
       required: true,
     },
     codeExample: String, // Optional

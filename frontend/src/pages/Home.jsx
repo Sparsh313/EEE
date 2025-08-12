@@ -7,14 +7,13 @@ export default function Home() {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-    api.get("/projects?limit=5").then((res) => setProjects(res.data));
-    api.get("/topic?limit=3").then((res) => setTopics(res.data));
+    api.get("/projects").then((res) => setProjects(res.data));
+    api.get("/topic").then((res) => setTopics(res.data));
   }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px8 space-y-20">
       {/* 🔥 HERO SECTION */}
-
       <section className="grid md:grid-cols-2 gap-10 items-center py-4 ">
         {/* Left Side (Text) */}
         <div className="space-y-6 text-center md:text-left">
@@ -44,6 +43,7 @@ export default function Home() {
           />
         </div>
       </section>
+
       {/* ✅ WHY BUILD HERE */}
       <section className="text-center space-y-10">
         <h2 className="text-3xl md:text-4xl font-bold text-primary">
@@ -94,6 +94,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* 🚀 LATEST PROJECTS (SCROLL) */}
       {/* <section className="space-y-4">
         <div className="flex justify-between items-center">
@@ -157,7 +158,7 @@ export default function Home() {
 
         <div className="overflow-x-auto scrollbar-hide">
           <div className="flex gap-5 pb-2 snap-x snap-mandatory scroll-smooth">
-            {projects.slice(0,5).map((project) => (
+            {projects.slice(0, 5).map((project) => (
               <Link
                 key={project._id}
                 to={`/projects/${project.slug}`}

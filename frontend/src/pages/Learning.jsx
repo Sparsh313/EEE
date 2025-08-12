@@ -1,4 +1,4 @@
-    import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/axios";
 
@@ -42,7 +42,8 @@ export default function Learn() {
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-bold text-primary">📘 Learning Topics</h1>
         <p className="text-gray-500">
-          Master EEE concepts from basics to advanced with simple, short, and contextual content.
+          Master EEE concepts from basics to advanced with simple, short, and
+          contextual content.
         </p>
       </div>
 

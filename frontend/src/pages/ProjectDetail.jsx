@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import api from "../services/axios";
 
 export default function ProjectDetail() {
   const { slug } = useParams();
   const [project, setProject] = useState(null);
-
+  console.log(slug);
   useEffect(() => {
     api
       .get(`/projects/${slug}`)
@@ -13,77 +13,104 @@ export default function ProjectDetail() {
       .catch((err) => console.error(err));
   }, [slug]);
 
-  if (!project) return <div className="text-center py-10">Loading...</div>;
+  if (!project) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner text-primary"></span>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-10">
-      {/* Title & Tags */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-primary">{project.title}</h1>
-        <div className="flex gap-2 flex-wrap">
+    <div className="max-w-5xl mx-auto space-y-12 py-10 px-4">
+      {/* HERO */}
+      <section className="bg-gradient-to-r from-primary/80 to-secondary/80 rounded-xl p-8 text-white text-center shadow-lg">
+        <h1 className="text-4xl font-bold mb-3">{project.title}</h1>
+        <div className="flex justify-center gap-3 mb-4">
           <span className="badge badge-outline">{project.category}</span>
-          <span className="badge badge-primary">{project.difficulty}</span>
-          {project.tags.map((tag, i) => (
-            <span key={i} className="badge badge-secondary">
-              {tag}
-            </span>
-          ))}
+          <span className="badge badge-accent">{project.difficulty}</span>
         </div>
-      </div>
-
-      {/* Description */}
-      <section>
-        <h2 className="text-xl font-semibold">🔍 Description</h2>
-        <p className="mt-2 text-gray-700">{project.description}</p>
+        <p className="max-w-2xl mx-auto text-lg">{project.description}</p>
       </section>
 
-      {/* Apparatus */}
+      {/* DESCRIPTION */}
       <section>
-        <h2 className="text-xl font-semibold">🔧 Components Required</h2>
-        <ul className="list-disc ml-6 mt-2 text-gray-800">
-          {project.components.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
+        <h2 className="text-2xl font-bold mb-4 text-primary">
+          📜 Project Overview
+        </h2>
+        <div className="bg-base-100 p-6 rounded-xl shadow">
+          <p>{project.description}</p>
+        </div>
       </section>
 
-      {/* Circuit Diagram */}
-      {project.circuitImage && (
-        <section>
-          <h2 className="text-xl font-semibold">🔌 Circuit Diagram</h2>
-          <img
-            src={project.circuitImage}
-            alt="Circuit"
-            className="w-full max-w-md mt-4 rounded shadow"
-          />
-        </section>
-      )}
-
-      {/* Code */}
+      {/* STEPS */}
       <section>
-        <h2 className="text-xl font-semibold">💻 Arduino Code</h2>
-        <pre className="bg-base-200 rounded p-4 mt-2 overflow-auto text-sm">
-          <code>{project.code}</code>
-        </pre>
-      </section>
-
-      {/* Steps */}
-      <section>
-        <h2 className="text-xl font-semibold">🪜 Step-by-Step Guide</h2>
-        <ol className="list-decimal ml-6 mt-2 space-y-2 text-gray-800">
-          {project.steps.map((step, i) => (
-            <li key={i}>{step}</li>
+        <h2 className="text-2xl font-bold mb-4 text-primary">
+          🛠 Steps to Build
+        </h2>
+        <ol className="list-decimal list-inside space-y-2 bg-base-100 p-6 rounded-xl shadow">
+          {project.steps.map((step, idx) => (
+            <li key={idx} className="text-gray-700">
+              {step}
+            </li>
           ))}
         </ol>
       </section>
 
-      {/* Notes / Conclusion */}
-      {project.notes && (
+      {/* CIRCUIT IMAGE */}
+      {project.circuitImage && (
         <section>
-          <h2 className="text-xl font-semibold">📝 Notes</h2>
-          <p className="mt-2 text-gray-700">{project.notes}</p>
+          <h2 className="text-2xl font-bold mb-4 text-primary">
+            🔌 Circuit Diagram
+          </h2>
+          <div className="bg-base-100 p-6 rounded-xl shadow flex justify-center">
+            <img
+              src={project.circuitImage}
+              alt="Circuit Diagram"
+              className="max-h-96 object-contain rounded-lg border"
+            />
+          </div>
         </section>
       )}
+
+      {/* CODE */}
+      <section>
+        <h2 className="text-2xl font-bold mb-4 text-primary">💻 Code</h2>
+        {project.code ? (
+          <a
+            href={project.code}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+          >
+            View Code on GitHub
+          </a>
+        ) : (
+          <p className="text-gray-500">Code not available</p>
+        )}
+      </section>
+
+      {/* VIDEO */}
+      {project.videoLink && (
+        <section>
+          <h2 className="text-2xl font-bold mb-4 text-primary">
+            🎥 Video Tutorial
+          </h2>
+          <div className="aspect-w-16 aspect-h-9">
+            <iframe
+              src={project.videoLink}
+              title="YouTube video"
+              className="w-full h-96 rounded-xl shadow"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </section>
+      )}
+
+      {/* FOOTER */}
+      <footer className="text-sm text-gray-500 text-center">
+        📅 Created on: {new Date(project.createdAt).toLocaleDateString()}
+      </footer>
     </div>
   );
 }
