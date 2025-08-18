@@ -11,13 +11,15 @@ exports.createProject = async (req, res) => {
       components,
       code,
       steps,
-      circuitImage,
       videoLink,
     } = req.body;
+    const circuitImage = req.file ? req.file.path : null;
     const slug = slugify(title, { lower: true });
 
 
-    // 1️⃣ Check required fields
+    // ERROR HANDLING
+
+    // Check required fields
     if (!title || !category || !difficulty || !description) {
       return res.status(400).json({
         success: false,
@@ -25,7 +27,6 @@ exports.createProject = async (req, res) => {
           "Please provide all required fields (title, category, difficulty, description)",
       });
     }
-
     // Duplicate project
         const existingProject = await Project.findOne({ slug });
         if (existingProject) {
