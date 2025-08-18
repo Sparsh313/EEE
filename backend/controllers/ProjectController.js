@@ -14,8 +14,26 @@ exports.createProject = async (req, res) => {
       circuitImage,
       videoLink,
     } = req.body;
-
     const slug = slugify(title, { lower: true });
+
+
+    // 1️⃣ Check required fields
+    if (!title || !category || !difficulty || !description) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Please provide all required fields (title, category, difficulty, description)",
+      });
+    }
+
+    // Duplicate project
+        const existingProject = await Project.findOne({ slug });
+        if (existingProject) {
+          return res.status(400).json({
+            success: false,
+            message: "Project with this name already exists",
+          });
+        }
 
     const project = await Project.create({
       title,

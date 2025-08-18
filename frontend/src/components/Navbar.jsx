@@ -36,6 +36,9 @@ export default function Navbar() {
             <li>
               <Link to="/learning">Learning</Link>
             </li>
+            <li>
+              <Link to="/admin/login">ADMIN PAGE</Link>
+            </li>
           </ul>
         </div>
         <ul className="menu menu-horizontal px-1 hidden lg:flex">
@@ -44,6 +47,9 @@ export default function Navbar() {
           </li>
           <li>
             <Link to="/learning">Learning</Link>
+          </li>
+          <li>
+            <Link to="/admin/login">Admin Page</Link>
           </li>
         </ul>
         <button className="btn btn-sm btn-ghost ml-2" onClick={toggleTheme}>
