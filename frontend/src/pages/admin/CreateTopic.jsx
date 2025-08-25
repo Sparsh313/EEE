@@ -47,7 +47,7 @@ export default function CreateTopic() {
         formData.append(key, form[key]);
       });
 
-      if (file) formData.append("image", file); dde
+      if (file) formData.append("image", file);
 
       await api.post("/topic", formData, {
         headers: {
