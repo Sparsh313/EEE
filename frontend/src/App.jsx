@@ -18,6 +18,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
+   
     <Router>
       <Navbar />
       <div className="px-4 py-6">

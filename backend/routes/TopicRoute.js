@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const adminAuth = require("../middleware/adminAuth");
+const upload = require("../middleware/upload");
+
 const {
   createTopic,
   getAllTopics,
@@ -14,7 +16,7 @@ router.get("/", getAllTopics);
 router.get("/:slug", getTopicBySlug);
 
 // Admin-only
-router.post("/", adminAuth, createTopic);
+router.post("/", adminAuth, upload.single("image"), createTopic);
 router.put("/:slug", adminAuth, updateTopic);
 router.delete("/:slug", adminAuth, deleteTopic);
 

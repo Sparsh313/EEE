@@ -12,6 +12,7 @@ export default function CreateTopic() {
     image: "",
   });
 
+  const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -31,6 +32,9 @@ export default function CreateTopic() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +42,13 @@ export default function CreateTopic() {
     setIsSubmitting(true);
 
     try {
+      const formData = new FormData();
+      Object.keys(form).forEach((key) => {
+        formData.append(key, form[key]);
+      });
+
+      if (file) formData.append("circuitImage", file); 
+
       await api.post("/topic", form);
       navigate("/admin/dashboard");
     } catch (error) {
@@ -123,19 +134,17 @@ export default function CreateTopic() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Image URL</label>
+          <label className="block text-sm font-medium mb-1">
+             Image
+          </label>
           <input
-            name="image"
-            value={form.image}
-            placeholder="https://example.com/diagram.png"
-            onChange={handleChange}
-            className="input input-bordered w-full"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="file-input file-input-bordered w-full"
+            required
           />
-          <p className="text-xs text-gray-500 mt-1">
-            Optional diagram or illustration URL
-          </p>
         </div>
-
         <button
           type="submit"
           className="btn btn-primary w-full"

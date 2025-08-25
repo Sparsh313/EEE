@@ -1,9 +1,10 @@
 const LearningTopic = require("../models/Topic");
 const slugify = require("slugify");
 
-exports.createTopic = async (req, res)   => {
+exports.createTopic = async (req, res) => {
   try {
-    const { title, description, category, codeExample, image } = req.body;
+    const { title, description, category, codeExample } = req.body;
+    const image = req.file ? req.file.path : null;
     const slug = slugify(title, { lower: true });
 
     const topic = await LearningTopic.create({
