@@ -42,7 +42,7 @@ exports.createProject = async (req, res) => {
       category,
       difficulty,
       description,
-      components,
+      components: components ? components.split(",") : [],
       code,
       steps,
       circuitImage,

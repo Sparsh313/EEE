@@ -19,8 +19,8 @@ const learningTopicSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    codeExample: String, // Optional
-    image: String, // Optional: diagram/image URL
+    codeExample: String,
+    image: String, 
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

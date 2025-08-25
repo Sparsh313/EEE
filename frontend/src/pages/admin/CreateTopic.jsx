@@ -47,9 +47,13 @@ export default function CreateTopic() {
         formData.append(key, form[key]);
       });
 
-      if (file) formData.append("circuitImage", file); 
+      if (file) formData.append("image", file); dde
 
-      await api.post("/topic", form);
+      await api.post("/topic", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       navigate("/admin/dashboard");
     } catch (error) {
       if (error.response?.data?.message) {

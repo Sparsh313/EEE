@@ -24,6 +24,7 @@ const projectSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true,
+      
     },
     components: [String], // ["NodeMCU", "Relay", "Bulb"]
     circuitImage: String, // cloudinary or /uploads/
