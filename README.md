@@ -1,5 +1,7 @@
 # ⚡ EEE - Admin Panel Project  
 
+Deployed here : https://eee-black.vercel.app/
+
 A full-stack MERN application with **Admin Panel** functionality for managing data efficiently.  
 This project is divided into **Frontend (React + Vite)** and **Backend (Node.js + Express + MongoDB)**.  
 
