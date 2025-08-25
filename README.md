@@ -1,65 +1,62 @@
-# ⚡ EEE Project Platform (MERN)
+# ⚡ EEE - Admin Panel Project  
 
-This is a MERN stack project platform for EEE/ECE students where they can post, explore, and learn about IoT, MATLAB, and circuit projects.
+A full-stack MERN application with **Admin Panel** functionality for managing data efficiently.  
+This project is divided into **Frontend (React + Vite)** and **Backend (Node.js + Express + MongoDB)**.  
 
-## 🚀 Features
+---
 
-- User Authentication (JWT + bcrypt)
-- Post & Manage Topics (with Image Upload)
-- Secure Admin Routes
-- MongoDB Atlas Integration
-- React Frontend with DaisyUI Styling
+## 📌 Features
+- 🚀 Full-stack MERN application
+- 🔐 Authentication & Admin access
+- 📂 File upload with Multer
+- 🎨 Clean frontend with React + Vite
+- ⚡ REST API backend with Express & MongoDB
 
-## 🛠 Tech Stack
+---
 
-- **Frontend**: React, DaisyUI, Axios
-- **Backend**: Node.js, Express.js, Multer
-- **Database**: MongoDB Atlas
-- **Deployment**: Render (Backend), Vercel/Netlify (Frontend)
+## 📂 Project Structure
+EEE/
+├── backend/ # Express + MongoDB backend
+├── frontend/ # React + Vite frontend
+├── README.md
 
-## ⚡ Installation
+---
 
-### 1. Clone repo
+## ⚙️ Setup Instructions
 
+### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/sparsh313/EEE.git
 cd EEE
-2. Backend Setup
-bash
-Copy
-Edit
+```
+
+2️⃣ Backend Setup
+
+```bash
 cd backend
 npm install
-Create a .env file:
-
-ini
-Copy
-Edit
-PORT=5000
-MONGO_URI=your-mongodb-atlas-uri
-JWT_SECRET=your-secret
-Start server:
-bash
-Copy
-Edit
 npm start
-3. Frontend Setup
-bash
-Copy
-Edit
+```
+
+✅ Runs on: http://localhost:5000
+
+3️⃣ Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
-4. Deployment
-Backend → Render
+```
+✅ Runs on: http://localhost:5173
 
-Frontend → Vercel
-
-Update API base URL in frontend/src/services/axios.js
-
-📸 Screenshots
-<img src="https://res.cloudinary.com/ddv5lbkgh/image/upload/v1756103484/project_images/w3ozlcfsmskif7r5s2ek.png">
+🛠️ Tech Stack
+Frontend: React, Vite, Axios, TailwindCSS (or DaisyUI if applied)
+Backend: Node.js, Express.js, MongoDB, Multer
+Other Tools: JWT Authentication, REST API
 
 👨‍💻 Author
 Sparsh Singh
 
+
+📜 License
+This project is licensed under the MIT License - feel free to use and modify.
