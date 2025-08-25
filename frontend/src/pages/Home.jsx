@@ -95,6 +95,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Project section */}
       <section className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
@@ -157,16 +158,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 📚 TOPICS SECTION */}
+      {/* Learning section */}
       <section className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
             <h2 className="text-2xl font-bold text-primary">
-              📚 Learning Topics
+              🔧 Learning Topics
             </h2>
             <p className="text-gray-600 text-sm">
-              Understand core electrical concepts with simple, short
-              explanations and real-world use.
+              Explore beginner to advanced EEE/ECE projects with complete
+              guidance.
             </p>
           </div>
           <Link
@@ -177,39 +178,41 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {topics.map((topic) => (
-            <Link
-              key={topic._id}
-              to={`/learning/${topic.slug}`}
-              className="border border-base-200 bg-base-100 rounded-xl p-5 hover:shadow-md transition-all"
-            >
-              <div className="flex justify-between items-start">
-                <h3 className="font-semibold text-md text-primary">
-                  {topic.title}
-                </h3>
-                {/* Optional Icon */}
-                <img
-                  src={
-                    topic.icon ||
-                    "https://img.icons8.com/fluency/48/circuit.png"
-                  }
-                  alt="topic"
-                  className="w-8 h-8"
-                />
-              </div>
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex gap-5 pb-2 snap-x snap-mandatory scroll-smooth">
+            {topics.slice(0, 5).map((topic) => (
+              <Link
+                key={topic._id}
+                to={`/topics/${topic.slug}`}
+                className="min-w-[260px] max-w-[280px] bg-base-100 border border-base-200 rounded-xl p-5 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 snap-start"
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-semibold text-md text-primary line-clamp-2">
+                    {topic.title}
+                  </h3>
+                  <img
+                    src={
+                      topic.icon ||
+                      "https://img.icons8.com/fluency/48/000000/electronics.png"
+                    }
+                    alt="topic icon"
+                    className="w-7 h-7"
+                  />
+                </div>
+                <p className="text-sm text-gray-600 line-clamp-3">
+                  {topic.description?.slice(0, 63)}...
+                </p>
 
-              <p className="text-sm text-gray-500 mt-2">
-                {topic.estimatedTime || "5 min read"}
-              </p>
-
-              <p className="text-sm text-gray-600 mt-2 line-clamp-3">
-                {topic.summary?.slice(0, 100)}...
-              </p>
-            </Link>
-          ))}
+                <div className="mt-3 flex flex-wrap gap-1 text-sm text-gray-500">
+                  {topic.category}
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* 📚 TOPICS SECTION */}
 
       {/* FINAL CTA */}
       <section className="bg-primary text-white rounded-xl p-10 text-center space-y-4">
