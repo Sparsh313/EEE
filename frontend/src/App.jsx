@@ -8,7 +8,7 @@ import TopicDetail from "./pages/TopicDetail";
 
 // Admin pages
 import AdminLogin from "./pages/admin/AdminLogin";
-import AdminDashboard from "./pages/admin/dashborad";
+import AdminDashboard from "./pages/admin/Dashborad";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CreateTopic from "./pages/admin/CreateTopic";
 // import UpdateTopic from "./pages/admin/topics/UpdateTopic";
