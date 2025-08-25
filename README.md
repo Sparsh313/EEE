@@ -20,10 +20,6 @@ EEE/
 ├── frontend/ # React + Vite frontend
 ├── README.md
 
-yaml
-Copy
-Edit
-
 ---
 
 ## ⚙️ Setup Instructions
@@ -32,22 +28,25 @@ Edit
 ```bash
 git clone https://github.com/sparsh313/EEE.git
 cd EEE
+```
+
 2️⃣ Backend Setup
-bash
-Copy
-Edit
+
+```bash
 cd backend
 npm install
 npm start
+```
+
 ✅ Runs on: http://localhost:5000
 
 3️⃣ Frontend Setup
-bash
-Copy
-Edit
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 ✅ Runs on: http://localhost:5173
 
 🛠️ Tech Stack
@@ -57,7 +56,7 @@ Other Tools: JWT Authentication, REST API
 
 👨‍💻 Author
 Sparsh Singh
-🔗 GitHub Profile
+
 
 📜 License
 This project is licensed under the MIT License - feel free to use and modify.
