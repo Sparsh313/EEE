@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Learning from "./pages/Learning";
@@ -10,15 +10,13 @@ import TopicDetail from "./pages/TopicDetail";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/dashborad";
 import ProtectedRoute from "./components/ProtectedRoute";
-  import CreateTopic from "./pages/admin/CreateTopic";
-  // import UpdateTopic from "./pages/admin/topics/UpdateTopic";
-  import CreateProject from "./pages/admin/CreateProject";
-  import UpdateProject from "./pages/admin/UpdateProject";
-
+import CreateTopic from "./pages/admin/CreateTopic";
+// import UpdateTopic from "./pages/admin/topics/UpdateTopic";
+import CreateProject from "./pages/admin/CreateProject";
+import UpdateProject from "./pages/admin/UpdateProject";
 
 function App() {
   return (
-   
     <Router>
       <Navbar />
       <div className="px-4 py-6">
@@ -44,7 +42,6 @@ function App() {
           {/* <Route path="/admin/topic/edit/:slug" element={<UpdateTopic />} /> */}
           <Route path="/admin/project/create" element={<CreateProject />} />
           <Route path="/admin/project/edit/:slug" element={<UpdateProject />} />
-        
         </Routes>
       </div>
     </Router>

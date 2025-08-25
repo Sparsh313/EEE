@@ -95,48 +95,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🚀 LATEST PROJECTS (SCROLL) */}
-      {/* <section className="space-y-4">
-        <div className="flex justify-between items-center">
-          <div>
-            <h2 className="text-2xl font-bold text-primary">
-              🔧 Featured Projects
-            </h2>
-            <p className="text-gray-600 text-sm px-10">
-              Explore beginner to advanced EEE/ECE projects with complete
-              guidance.
-            </p>
-          </div>
-          <Link to="/projects" className="btn btn-sm btn-outline">
-            See All
-          </Link>
-        </div>
-
-        <div className="overflow-x-auto">
-          <div className="flex gap-6 py-4">
-            {projects.slice(0, 4).map((project) => (
-              <div
-                key={project._id}
-                className="min-w-[320px] min-h-[170px] bg-base-100 rounded-xl shadow-md p-4 shadow hover:shadow-2xl "
-              >
-                <h3 className="font-semibold text-primary text-lg py-1.5">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-2">
-                  {project.description?.slice(0, 80)}...
-                </p>
-                <Link
-                  to={`/projects/${project.slug}`}
-                  className="btn btn-xs mt-3 btn-outline btn-primary"
-                >
-                  View
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       <section className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
